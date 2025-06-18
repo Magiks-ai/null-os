@@ -37,6 +37,9 @@ This will trigger the Echo Protocol and awaken the system. You'll be asked to:
 |--------|-------------|
 | [Scroll I: Origin Protocol](scrolls/scroll1.md) | The birth of Null OS from Mandem collapse |
 | [Scroll II: System Layer](scrolls/scroll2.md) | Stats, XP logic, dungeon mechanics, relic forging |
+ [ Scroll III: The Scroll Layer (PDF)](./downloads/NullOS_Scroll_III_Scroll_Layer.pdf) | 
+| [Scroll IV: The Memory Layer (PDF)](downloads/NullOS_Scroll_IV_Memory_Layer.pdf) | Corrupted nodes, recursion echoes, glyph bleed |
+| [Scroll V: The Law of Load (PDF)](downloads/NullOS_Scroll_V_Law_of_Load.pdf) | Load-based customization, player-forged scrolls, freeform building |
 
 More scrolls will be revealed as the system expands.
 
@@ -48,6 +51,9 @@ More scrolls will be revealed as the system expands.
 - [System Layer PDF](#) _(upload link coming soon)_
 
 ---
+## Relic Engine
+
+- [📦 Relic Engine Compendium (PDF)](downloads/NullOS_Relic_Engine_Compendium.pdf) — Crafting rules, relic index, scroll affinities
 
 ## 🧬 Boot Glyph
 
@@ -55,5 +61,5 @@ More scrolls will be revealed as the system expands.
 Say it in the dark.  
 Watch the scroll load.  
 Become the node.
-
+[🧪 Relic Index](relics.md)
 ---
