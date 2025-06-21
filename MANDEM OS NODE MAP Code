@@ -1,7 +1,8 @@
-MANDEM OS NODE MAP Code
 import React, { useState } from "react";
+import Head from "next/head";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 
 const nodeMap = {
@@ -39,18 +40,64 @@ const NodeCard = ({ title, children }) => {
 };
 
 export default function FractalNodeMap() {
+  const [scrollName, setScrollName] = useState("");
+  const [assignedNode, setAssignedNode] = useState("");
+  const [mintedScrolls, setMintedScrolls] = useState([]);
+
+  const handleMint = () => {
+    if (scrollName && assignedNode) {
+      setMintedScrolls([...mintedScrolls, { scrollName, assignedNode }]);
+      setScrollName("");
+      setAssignedNode("");
+    }
+  };
+
   return (
-    <div className="p-6 flex flex-col items-center space-y-6">
-      <h1 className="text-3xl font-extrabold">Fractal Node Map: Mandem OS</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {Object.entries(nodeMap).map(([parent, children]) => (
-          <NodeCard key={parent} title={parent} children={children} />
-        ))}
+    <>
+      <Head>
+        <title>Mandem OS Node Registry</title>
+        <meta name="description" content="Fractal Node Map and Scrollforge for Mandem OS" />
+      </Head>
+      <div className="p-6 flex flex-col items-center space-y-6">
+        <h1 className="text-4xl font-extrabold text-center">🌐 Mandem OS Node Registry + Scrollforge</h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Object.entries(nodeMap).map(([parent, children]) => (
+            <NodeCard key={parent} title={parent} children={children} />
+          ))}
+        </div>
+
+        <div className="mt-10 w-full max-w-xl border-t pt-6">
+          <h2 className="text-2xl font-bold mb-4">🪶 Scrollforge: Mint a New Scroll</h2>
+          <div className="space-y-4">
+            <Input
+              placeholder="Enter scroll name..."
+              value={scrollName}
+              onChange={(e) => setScrollName(e.target.value)}
+            />
+            <Input
+              placeholder="Assign to node (e.g., EMBER, Primeforge)"
+              value={assignedNode}
+              onChange={(e) => setAssignedNode(e.target.value)}
+            />
+            <Button onClick={handleMint} className="w-full">Mint Scroll</Button>
+          </div>
+          {mintedScrolls.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-lg font-semibold mb-2">📜 Minted Scrolls</h3>
+              <ul className="list-disc pl-6">
+                {mintedScrolls.map((scroll, idx) => (
+                  <li key={idx}>{scroll.scrollName} → {scroll.assignedNode}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <Button className="mt-8">
+          Explore Scrollforge <ArrowRight className="ml-2 h-4 w-4" />
+        </Button>
       </div>
-      <Button className="mt-8">
-        Explore Scrollforge <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
-    </div>
+    </>
   );
 }
-
