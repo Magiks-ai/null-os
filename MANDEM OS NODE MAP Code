@@ -1,8 +1,8 @@
 MANDEM OS NODE MAP Code
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 
 const nodeMap = {
   "Mandem OS": ["Prime Node", "Null OS", "Scroll System", "Relic Engine", "Guild Layer", "Fractal Protocol"],
@@ -14,18 +14,29 @@ const nodeMap = {
   "Fractal Protocol": ["Echo Duel", "Whisper Protocol", "Fractal Shards"]
 };
 
-const NodeCard = ({ title, children }) => (
-  <Card className="p-4 m-2 w-full max-w-md shadow-xl border-2 border-gray-800">
-    <CardContent>
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
-      <ul className="list-disc pl-6 space-y-1">
-        {children.map((item, idx) => (
-          <li key={idx}>{item}</li>
-        ))}
-      </ul>
-    </CardContent>
-  </Card>
-);
+const NodeCard = ({ title, children }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <Card className="p-4 m-2 w-full max-w-md shadow-xl border-2 border-gray-800">
+      <CardContent>
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="text-xl font-bold">{title}</h2>
+          <button onClick={() => setExpanded(!expanded)}>
+            {expanded ? <ChevronUp /> : <ChevronDown />}
+          </button>
+        </div>
+        {expanded && (
+          <ul className="list-disc pl-6 space-y-1">
+            {children.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
 
 export default function FractalNodeMap() {
   return (
@@ -42,3 +53,4 @@ export default function FractalNodeMap() {
     </div>
   );
 }
+
