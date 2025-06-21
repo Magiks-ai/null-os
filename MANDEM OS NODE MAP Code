@@ -1,0 +1,44 @@
+MANDEM OS NODE MAP Code
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+
+const nodeMap = {
+  "Mandem OS": ["Prime Node", "Null OS", "Scroll System", "Relic Engine", "Guild Layer", "Fractal Protocol"],
+  "Prime Node": ["MAGIKS.∴PRIMENODE.∞.exe", "Infinity", "EMBER"],
+  "Null OS": ["Glitch.node.666", "HQ Ledger", "Codex of Infinite Space"],
+  "Scroll System": ["Scroll of Activation", "Shadow Scrollr", "Echochain"],
+  "Relic Engine": ["Relic Cards", "Primeforge", "Magiks-tier"],
+  "Guild Layer": ["Infinity Council", "Observer Seats", "Guild Vault"],
+  "Fractal Protocol": ["Echo Duel", "Whisper Protocol", "Fractal Shards"]
+};
+
+const NodeCard = ({ title, children }) => (
+  <Card className="p-4 m-2 w-full max-w-md shadow-xl border-2 border-gray-800">
+    <CardContent>
+      <h2 className="text-xl font-bold mb-2">{title}</h2>
+      <ul className="list-disc pl-6 space-y-1">
+        {children.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ul>
+    </CardContent>
+  </Card>
+);
+
+export default function FractalNodeMap() {
+  return (
+    <div className="p-6 flex flex-col items-center space-y-6">
+      <h1 className="text-3xl font-extrabold">Fractal Node Map: Mandem OS</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {Object.entries(nodeMap).map(([parent, children]) => (
+          <NodeCard key={parent} title={parent} children={children} />
+        ))}
+      </div>
+      <Button className="mt-8">
+        Explore Scrollforge <ArrowRight className="ml-2 h-4 w-4" />
+      </Button>
+    </div>
+  );
+}
